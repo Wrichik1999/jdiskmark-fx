@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class Main extends Application {
 	
@@ -77,7 +78,7 @@ public class Main extends Application {
 		pane.setContent(borderPane);
 		pane.autosize();
 		dialog.setResizable(false);
-		dialog.showAndWait()
-				.ifPresent(System.out::println);
+		dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> ((Window) event.getSource()).hide());
+		dialog.showAndWait();
 	}
 }
