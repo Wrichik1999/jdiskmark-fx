@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 public class Main extends Application {
@@ -29,13 +30,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.show();
-		modifyThreads(primaryStage);
+		modifyThreads();
 	}
 	
-	private void modifyThreads(Stage primaryStage) {
+	private void modifyThreads() {
 		Preferences preferences = Preferences.userNodeForPackage(Main.class).node("threads");
 		ResourceBundle bundle = ResourceBundle.getBundle("threads");
 		Dialog<Boolean> dialog = new Dialog<>();
+		dialog.initStyle(StageStyle.UNIFIED);
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.setOnCloseRequest(event -> {
 			dialog.hide();
